@@ -63,9 +63,9 @@ local Communication = Modules.Communication
 local Config = Modules.Config
 
 --// Use custom font (optional)
---local FontContent = Files:GetAsset("ProggyClean.ttf", true)
---local FontJsonFile = Files:CreateFont("ProggyClean", FontContent)
---Ui:SetFontFile(FontJsonFile)
+local FontContent = Files:GetAsset("ProggyClean.ttf", true)
+local FontJsonFile = Files:CreateFont("ProggyClean", FontContent)
+Ui:SetFontFile(FontJsonFile)
 
 --// Load modules
 Process:CheckConfig(Config)
@@ -130,5 +130,5 @@ local EnablePatches = Ui:AskUser({
 
 --// Begin hooks
 Event:Fire("BeginHooks", {
-	PatchFunctions = EnablePatches
+	PatchFunctions = false
 })
