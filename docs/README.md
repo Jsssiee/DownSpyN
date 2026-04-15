@@ -1,19 +1,21 @@
-# Sigma-Spy
-A complete Remote Spy with an incredible parser that captures incoming and outgoing remotes data with Actor support!
+unavailable/fixing errors
+
+# DownSpyN (or Sigma Spy)
+Copy of a complete Remote Spy with an incredible parser that captures incoming and outgoing remotes data with Actor support.
 
 ## Socials 💬
 - [Sigma Spy Showcase (Youtube)](https://www.youtube.com/watch?v=Q4VrpE1UfHg) 
-- [Discord](https://discord.gg/s9ngmUDWgb) 
+- [Discord](https://discord.gg/s9ngmUDWgb) [Unavailable]
 
 ## Loadstring
 ```lua
 --// Sigma Spy @depso
-loadstring(game:HttpGet("https://raw.githubusercontent.com/0xfinder/Sigma-Spy/refs/heads/main/Main.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Jsssiee/DownSpyN/refs/heads/main/Main.lua"))()
 ```
 
 ## Notices 🔔
-- Sigma Spy will have bugs, please report any bugs by opening an [issue](https://github.com/depthso/Sigma-Spy/issues) on Github
-- If you gave a suggestion, please post it in the [discussions](https://github.com/depthso/Sigma-Spy/discussions)
+- Sigma Spy will have bugs, please report any bugs by opening an [issue](https://github.com/depthso/Sigma-Spy/issues) on Github [Unavailable
+- If you gave a suggestion, please post it in the [discussions](https://github.com/depthso/Sigma-Spy/discussions) [Unavailable
 - If you have issues with the executor's comm library (get_comm_channel, create_comm_channel), enable `ForceUseCustomComm` in Sigma Spy/Config.lua which is found in your Executor's workspace folder after running
 - AWP and Zenith is recommended to use as of 11/06/25
 
@@ -97,8 +99,8 @@ Your executor must support these functions in order for it to function:
 | File library |
 | getconnections |
 | newcclosure |
-
+so yea get a pretty good executor like Volt, Potassium.. idk
 
 ## Libraries used
-- [ReGui (Depso)](https://github.com/depthso/Dear-ReGui/tree/main) 
-- [Roblox-Parser (Depso)](https://github.com/depthso/Roblox-parser) 
+- [ReGui (Depso)](https://github.com/Jsssiee/Dear-ReGui/tree/main) [Made by Depso]
+- [Roblox-Parser (Depso)](https://github.com/Jsssiee/Roblox-parser) [Made by Depso]
