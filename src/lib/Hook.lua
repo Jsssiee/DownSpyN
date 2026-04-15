@@ -403,18 +403,31 @@ function Hook:LoadReceiveHooks()
 
 	if NoReceiveHooking then return end
 
-	--// Remote added
-	game.DescendantAdded:Connect(function(Remote) -- TODO
+
+	game.DescendantAdded:Connect(function(Remote) 
 		self:ConnectClientRecive(Remote)
 	end)
 
-	--// Collect remotes with nil parents
-	self:MultiConnect(getnilinstances())
 
-	--// Search for remotes
+	task.spawn(function()
+		local success, instances = pcall(getnilinstances)
+		if success and instances then
+			self:MultiConnect(instances)
+		end
+	end)
+
+
 	for _, Service in next, game:GetChildren() do
 		if table.find(BlackListedServices, Service.ClassName) then continue end
-		self:MultiConnect(Service:GetDescendants())
+		
+		task.spawn(function()
+			local success, descendants = pcall(function()
+				return Service:GetDescendants()
+			end)
+			if success and descendants then
+				self:MultiConnect(descendants)
+			end
+		end)
 	end
 end
 

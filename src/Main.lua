@@ -1,7 +1,7 @@
 --// Base Configuration
 local Configuration = {
 	UseWorkspace = false, 
-	NoActors = false,
+	NoActors = true,
 	FolderName = "DownSpyN",
 	RepoUrl = "https://raw.githubusercontent.com/Jsssiee/DownSpyN/refs/heads/main",
 	ParserUrl = "https://raw.githubusercontent.com/Jsssiee/Roblox-parser/refs/heads/main/dist/Main.luau"
