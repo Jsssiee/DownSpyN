@@ -1,0 +1,9 @@
+{
+    "output": "Main.lua",
+    "main": "src/Main.lua",
+    "frame": "build/frame.lua",
+    "darkluaconfig": "build/darklua.json",
+    "tags": {
+        "@lib": "src/lib"
+    }
+}
