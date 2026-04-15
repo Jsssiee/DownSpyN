@@ -40,7 +40,7 @@ function Hook:Init(Data)
 end
 
 --// The callback is expected to return a nil value sometimes which should be ingored
-local HookMiddle = newcclosure(function(OriginalFunc, Callback, AlwaysTable: boolean?, ...)
+local HookMiddle = function(OriginalFunc, Callback, AlwaysTable: boolean?, ...)
 	--// Invoke callback and check for a reponce otherwise ignored
 	local ReturnValues = Callback(...)
 	if ReturnValues then
@@ -113,7 +113,7 @@ function Hook:HookMetaCall(Object: Instance, Call: string, Callback: MetaFunc): 
 end
 
 function Hook:HookMetaMethod(Object: Instance, Call: string, Callback: MetaFunc): MetaFunc
-	local Func = newcclosure(Callback)
+	local Func = Callback
 	
 	--// Getrawmetatable
 	if Config.ReplaceMetaCallFunc then
@@ -403,31 +403,18 @@ function Hook:LoadReceiveHooks()
 
 	if NoReceiveHooking then return end
 
-
-	game.DescendantAdded:Connect(function(Remote) 
+	--// Remote added
+	game.DescendantAdded:Connect(function(Remote) -- TODO
 		self:ConnectClientRecive(Remote)
 	end)
 
+	--// Collect remotes with nil parents
+	self:MultiConnect(getnilinstances())
 
-	task.spawn(function()
-		local success, instances = pcall(getnilinstances)
-		if success and instances then
-			self:MultiConnect(instances)
-		end
-	end)
-
-
+	--// Search for remotes
 	for _, Service in next, game:GetChildren() do
 		if table.find(BlackListedServices, Service.ClassName) then continue end
-		
-		task.spawn(function()
-			local success, descendants = pcall(function()
-				return Service:GetDescendants()
-			end)
-			if success and descendants then
-				self:MultiConnect(descendants)
-			end
-		end)
+		self:MultiConnect(Service:GetDescendants())
 	end
 end
 

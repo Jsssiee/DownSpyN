@@ -1,7 +1,7 @@
 --// Base Configuration
 local Configuration = {
 	UseWorkspace = false, 
-	NoActors = true,
+	NoActors = false,
 	FolderName = "DownSpyN",
 	RepoUrl = "https://raw.githubusercontent.com/Jsssiee/DownSpyN/refs/heads/main",
 	ParserUrl = "https://raw.githubusercontent.com/Jsssiee/Roblox-parser/refs/heads/main/dist/Main.luau"
@@ -63,9 +63,9 @@ local Communication = Modules.Communication
 local Config = Modules.Config
 
 --// Use custom font (optional)
-local FontContent = Files:GetAsset("ProggyClean.ttf", true)
-local FontJsonFile = Files:CreateFont("ProggyClean", FontContent)
-Ui:SetFontFile(FontJsonFile)
+--local FontContent = Files:GetAsset("ProggyClean.ttf", true)
+--local FontJsonFile = Files:CreateFont("ProggyClean", FontContent)
+--Ui:SetFontFile(FontJsonFile)
 
 --// Load modules
 Process:CheckConfig(Config)
