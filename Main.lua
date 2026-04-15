@@ -95,4 +95,4 @@ local w=e:MakeActorScript(g,t)k:LoadHooks(w,t)local x=l:AskUser{Title=
 [[By enabling this, it MAY trigger hook detections in some games, this is why you are asked.]]
 ,"If it doesn't work, rejoin and press 'No'",'',
 '(This does not affect game functionality)'},Options={'Yes','No'}}=='Yes'u:Fire(
-'BeginHooks',{PatchFunctions=false})
+'BeginHooks',{PatchFunctions=x})

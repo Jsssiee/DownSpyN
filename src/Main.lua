@@ -130,5 +130,5 @@ local EnablePatches = Ui:AskUser({
 
 --// Begin hooks
 Event:Fire("BeginHooks", {
-	PatchFunctions = false
+	PatchFunctions = EnablePatches
 })
