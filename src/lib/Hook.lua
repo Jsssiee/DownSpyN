@@ -282,12 +282,8 @@ function Hook:HookClientInvoke(Remote, Method, Callback)
 end
 
 function Hook:MultiConnect(Remotes)
-	for Index, Remote in next, Remotes do
+	for _, Remote in next, Remotes do
 		self:ConnectClientRecive(Remote)
-		
-		if type(Index) == "number" and Index % 1000 == 0 then
-			task.wait()
-		end
 	end
 end
 
