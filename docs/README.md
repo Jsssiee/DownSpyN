@@ -1,5 +1,9 @@
 unavailable/fixing errors
+im struggling with freezing of roblox on potassium
+maybe some other executors are working with sigma spy but I cant test that tho
 
+
+credits to depso
 # DownSpyN (or Sigma Spy)
 Copy of a complete Remote Spy with an incredible parser that captures incoming and outgoing remotes data with Actor support.
 
