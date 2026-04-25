@@ -150,11 +150,11 @@ function Module:CheckValue(Value, Inbound: boolean?)
 end
 
 local Tick = 0
-function Module:WaitCheck()
+function Communication:WaitCheck()
     Tick += 1
-    if Tick > 40 then
-        Tick = 0 -- I could use modulus here but the interger will be massive
-        wait()
+    if Tick > 4000 then
+        Tick = 0 
+        task.wait() 
     end
 end
 
@@ -218,8 +218,8 @@ function Module:ConsolePrint(...)
     self:Communicate("Print", ...)
 end
 
-function Module:QueueLog(Data)
-    spawn(function()
+function Communication:QueueLog(Data)
+    task.spawn(function()
         local SerializedArgs = self:SerializeTable(Data.Args)
         Data.Args = SerializedArgs
 

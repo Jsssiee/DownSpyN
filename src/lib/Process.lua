@@ -158,12 +158,13 @@ end
 
 function Process:CheckValue(Value, Ignore: table?, Cache: table?)
     local Type = typeof(Value)
-    Communication:WaitCheck()
     
     if Type == "table" then
         Value = self:DeepCloneTable(Value, Ignore, Cache)
     elseif Type == "Instance" then
-        Value = cloneref(Value)
+        if type(cloneref) == "function" then
+            Value = cloneref(Value)
+        end
     end
     
     return Value
@@ -352,18 +353,29 @@ function Process:Decompile(Script: LocalScript | ModuleScript): string
     local KonstantAPI = "http://api.plusgiant5.com/konstant/decompile"
     local ForceKonstant = Config.ForceKonstantDecompiler
 
-    --// Use built-in decompiler if the executor supports it
     if decompile and not ForceKonstant then 
-        return decompile(Script)
+        local Success, Result = pcall(decompile, Script)
+        if Success and type(Result) == "string" and Result ~= "" then
+            return Result
+        end
     end
 
-    --// getscriptbytecode
     local Success, Bytecode = pcall(getscriptbytecode, Script)
     if not Success then
         local Error = `--Failed to get script bytecode, error:\n`
         Error ..= `\n--[[\n{Bytecode}\n]]`
         return Error, true
     end
+    
+    local Success2, Decompiled = Http:Post(KonstantAPI, Bytecode)
+    if not Success2 then
+        local Error = `--Failed to decompile script, error:\n`
+        Error ..= `\n--[[\n{Decompiled}\n]]`
+        return Error, true
+    end
+
+    return Decompiled
+end
     
     --// Send POST request to the API
     local Responce = request({

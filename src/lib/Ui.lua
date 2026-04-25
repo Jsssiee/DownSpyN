@@ -1303,13 +1303,14 @@ function Ui:QueueLog(Data)
 end
 
 function Ui:ProcessLogQueue()
-	local Queue = self.LogQueue
+    local Queue = self.LogQueue
     if #Queue <= 0 then return end
 
-	--// Create a log element for each in the Queue
-    for Index, Data in next, Queue do
+    local Items = table.clone(Queue)
+    table.clear(Queue)
+
+    for _, Data in ipairs(Items) do
         self:CreateLog(Data)
-        table.remove(Queue, Index)
     end
 end
 
